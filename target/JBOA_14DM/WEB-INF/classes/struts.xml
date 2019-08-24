@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!--登陆-->
+    <package name="employee" extends="struts-default" namespace="/">
+        <action name="employee_*" class="cn.jboa.action.EmployeeAction" method="{1}">
+            <result>index.jsp</result>
+            <result name="input">login.jsp</result>
+        </action>
+    </package>
+
+    <package name="claim" namespace="/" extends="struts-default">
+        <!--查询自己的报销单-->
+        <action name="claimVoucher_*" class="cn.jboa.action.ClaimVoucherAction"  method="{1}">
+            <result>/jsp/claim/claim_voucher_list.jsp</result>
+            <result name="toUpdate">/jsp/claim/claim_voucher_update.jsp</result>
+            <result name="toSearchClaimVoucher.action" type="redirectAction">/claimVoucher_searchClaimVoucher.action</result>
+            <result name="toGetClaimVoucher">/jsp/claim/claim_voucher_view.jsp</result>
+            <result name="toCheck">/jsp/claim/claim_voucher_check.jsp</result>
+        </action>
+    </package>
+
+    <package name="checkCode" extends="struts-default" namespace="/">
+        <action name="random" class="cn.jboa.action.RandomAction">
+        </action>
+    </package>
+</struts>
